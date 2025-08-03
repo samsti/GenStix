@@ -8,17 +8,20 @@ import Footer from '../components/Footer';
 import DashboardMock from '../components/DashboardMock';
 import Pricing from '../components/Pricing';
 import FAQ from '../components/FAQ';
-import Highlight from '../components/Highlight';
-import BlogSection from '../components/BlogSection';
 import AdminPanel from '../components/AdminPanel';
 import BlogPost from '../components/BlogPost';
 import Login from '../components/Login';
+import AIAgent from '../services/AIAgent';
+import Automations from '../services/Automations';
+import MetaAds from '../services/MetaAds';
 import { Routes, Route, Navigate, Link } from 'react-router-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../db/firebase';
-
+import VapiWidget from "../components/VapiWidget";
+import VapiEmbed from "../components/VapiEmbed";
+import TestimonialSection from "../components/TestimonialSection";
 function ProtectedRoute({ children }) {
     const [user, loading] = useAuthState(auth);
     if (loading) return <div className="text-center py-20">Loading...</div>;
@@ -33,7 +36,7 @@ function NotFound() {
                 Whatever you were trying to find here is not there anymore.
             </p>
             <Link
-                to="/"
+                to="/genstix/public"
                 className="inline-block bg-emerald-600 text-white px-6 py-3 rounded-md text-sm md:text-base font-semibold hover:bg-emerald-500 transition"
             >
                 Back to homepage
@@ -47,109 +50,99 @@ function App() {
 
     return (
         <BrowserRouter>
-            <Routes>
-                <Route
-                    path="/"
-                    element={
-                        <div className="flex flex-col min-h-screen scroll-smooth bg-white text-gray-900 font-sans">
-                            <Navbar />
-                            <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.6 }}
-                            >
-                                <Hero />
-                            </motion.div>
-                            <main className="flex-grow scroll-smooth">
+            <div className="relative flex flex-col min-h-screen scroll-smooth  bg-black text-white font-sans">
+                <Routes>
+                    <Route
+                        path="/"
+                        element={
+                            <>
+                                <Navbar />
                                 <motion.div
                                     initial={{ opacity: 0, y: 20 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
-                                    transition={{ duration: 0.6, delay: 0.1 }}
+                                    transition={{ duration: 0.6 }}
                                 >
-                                    <Highlight />
+                                    <Hero />
                                 </motion.div>
-                                <motion.div
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.6, delay: 0.2 }}
-                                >
-                                    <Services animated />
-                                </motion.div>
-                                <motion.div
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.6, delay: 0.3 }}
-                                >
-                                    <DashboardMock />
-                                </motion.div>
-                                <motion.div
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.6, delay: 0.4 }}
-                                >
-                                    <Testimonials />
-                                </motion.div>
-                                <motion.div
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.6, delay: 0.5 }}
-                                >
-                                    <BlogSection />
-                                </motion.div>
-                                <motion.div
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.6, delay: 0.5 }}
-                                >
-                                    <Pricing />
-                                </motion.div>
-                                <motion.div
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.6, delay: 0.6 }}
-                                >
-                                    <FAQ />
-                                </motion.div>
-                                <motion.div
-                                    id="contact"
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.6, delay: 0.7 }}
-                                    className="py-20 px-4"
-                                >
-                                    <ContactForm />
-                                </motion.div>
-                            </main>
-                            <Footer />
-                        </div>
-                    }
-                />
-                <Route
-                    path="/admin"
-                    element={
-                        <ProtectedRoute>
-                            <AdminPanel />
-                        </ProtectedRoute>
-                    }
-                />
-                <Route
-                    path="/login"
-                    element={user ? <Navigate to="/admin" replace /> : <Login />}
-                />
-                <Route path="/blog/:id" element={<BlogPost />} />
-                <Route path="*" element={<NotFound />} />
-            </Routes>
+
+                                <main className="flex-grow scroll-smooth relative z-20">
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ duration: 0.6, delay: 0.2 }}
+                                    >
+                                        <TestimonialSection />
+                                    </motion.div>
+
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ duration: 0.6, delay: 0.2 }}
+                                    >
+                                        <Services />
+                                    </motion.div>
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ duration: 0.6, delay: 0.3 }}
+                                    >
+                                        <DashboardMock />
+                                    </motion.div>
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ duration: 0.6, delay: 0.4 }}
+                                    >
+                                        <Testimonials />
+                                    </motion.div>
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ duration: 0.6, delay: 0.5 }}
+                                    >
+                                        <Pricing />
+                                    </motion.div>
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ duration: 0.6, delay: 0.6 }}
+                                    >
+                                        <FAQ />
+                                    </motion.div>
+                                    <motion.div
+                                        id="contact"
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ duration: 0.6, delay: 0.7 }}
+                                        className="py-20 px-4"
+                                    >
+                                        <ContactForm />
+                                    </motion.div>
+                                </main>
+                                <Footer />
+                            </>
+                        }
+                    />
+
+                    <Route path="/services/AIAgent" element={<AIAgent />} />
+                    <Route path="/services/Automations" element={<Automations />} />
+                    <Route path="/services/MetaAds" element={<MetaAds />} />
+                    <Route path="/admin" element={<ProtectedRoute><AdminPanel /></ProtectedRoute>} />
+                    <Route path="/login" element={user ? <Navigate to="/admin" replace /> : <Login />} />
+                    <Route path="/blog/:id" element={<BlogPost />} />
+                    <Route path="*" element={<NotFound />} />
+                </Routes>
+            </div>
         </BrowserRouter>
-    );
+);
 }
 
 export default App;

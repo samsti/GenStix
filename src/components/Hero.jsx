@@ -1,30 +1,27 @@
 export default function Hero() {
     return (
-        <div className="relative isolate px-6 pt-14 lg:px-8 overflow-hidden">
-            <div className="absolute inset-0 -z-10 transform-gpu overflow-hidden blur-3xl" aria-hidden="true">
-                <div className="absolute left-1/4 top-[-10rem] aspect-[1155/678] w-[50rem] rotate-[15deg] bg-gradient-to-tr from-emerald-200 to-emerald-400 opacity-30" style={{ clipPath: 'polygon(30% 10%, 80% 0%, 100% 50%, 70% 100%, 20% 90%, 0% 30%)' }} />
-                <div className="absolute left-[60%] top-[3rem] aspect-[1155/678] w-[60rem] rotate-[30deg] bg-gradient-to-tr from-emerald-300 to-emerald-500 opacity-25" style={{ clipPath: 'polygon(25% 0%, 85% 20%, 100% 80%, 60% 100%, 10% 80%, 0% 30%)' }} />
-                <div className="absolute left-0 bottom-[15rem] aspect-[1155/678] w-[60rem] rotate-[-20deg] bg-gradient-to-br from-emerald-100 to-emerald-300 opacity-20" style={{ clipPath: 'polygon(0% 0%, 100% 20%, 90% 90%, 20% 100%, 0% 80%)' }} />
-                <div className="absolute left-[12%] top-[10rem] aspect-[1155/678] w-[45rem] rotate-[25deg] bg-gradient-to-bl from-emerald-200 to-emerald-400 opacity-25" style={{ clipPath: 'polygon(30% 0%, 85% 15%, 100% 70%, 60% 100%, 10% 90%, 0% 30%)' }} />
-                <div className="absolute left-[75%] top-[1rem] aspect-[1155/678] w-[55rem] rotate-[5deg] bg-gradient-to-tl from-emerald-300 to-emerald-600 opacity-20" style={{ clipPath: 'polygon(20% 10%, 90% 0%, 100% 60%, 70% 90%, 30% 80%, 0% 40%)' }} />
-            </div>
-            <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
-                <div className="text-center">
-                    <h1 className="text-5xl font-semibold tracking-tight text-gray-900 sm:text-7xl">
-                        Scale with profitable <br className="hidden sm:inline" /> Meta ads
+        <div className="relative min-h-screen px-6 pt-14 lg:px-8 bg-black text-white overflow-hidden">
+            {/* Svítící pozadí */}
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[500px] rounded-half bg-[#645CFF] opacity-40 blur-[180px] z-0" />
+
+            <div className="relative z-10 mx-auto flex min-h-[calc(100vh-4rem)] max-w-4xl items-center justify-center text-center">
+                <div>
+                    <h1 className="text-5xl sm:text-6xl font-semibold tracking-tight text-white font-unbounded leading-tight max-w-[1000px] mx-auto">
+                        Nepřicházejte o klienty kvůli zmeškaným hovorům
                     </h1>
-                    <p className="mt-8 text-lg text-gray-600 sm:text-xl">
-                        Not budgets. We grow revenue, cut waste, and drive full-funnel performance.
+                    <p className="mt-8 text-lg text-gray-300 sm:text-xl">
+                        Vaše 24/7 AI recepční za vás vyřídí rezervace i hovory.
                     </p>
                     <div className="mt-10 flex items-center justify-center gap-x-6">
                         <a
                             href="#contact"
-                            className="rounded-md bg-emerald-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-emerald-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600"
+                            className="relative inline-block rounded-md bg-gradient-to-r from-[#645CFF] to-[#7F5CFF] px-6 py-3 text-sm font-semibold text-white shadow-md transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-[0_0_30px_6px_rgba(100,92,255,0.6)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#645CFF]"
                         >
-                            Get started
+                            Vyzkoušejte demo hovor
                         </a>
-                        <a href="#services" className="text-sm font-semibold text-gray-900">
-                            Learn more <span aria-hidden="true">→</span>
+
+                        <a href="#services" className="text-sm font-semibold text-gray-300 hover:text-white">
+                            Jak to funguje <span aria-hidden="true">→</span>
                         </a>
                     </div>
                 </div>

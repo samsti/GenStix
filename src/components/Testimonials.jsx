@@ -1,24 +1,23 @@
-// src/components/Testimonials.jsx
 import { useState } from 'react';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid';
 
 const testimonials = [
     {
-        quote: "MetaAds helped us 4x our ROAS in just 2 months. Their targeting and creative work is exceptional.",
+        quote: "Automatizovali jsme onboarding klientů pomocí Zapieru a Airtable — teď je to o 90 % rychlejší. Naprostá změna hry!",
         author: "Alex R.",
-        role: "eCommerce Owner",
+        role: "Vedoucí provozu",
         image: "https://randomuser.me/api/portraits/men/32.jpg",
     },
     {
-        quote: "Their optimization strategies made a huge impact on our leads. Highly recommended!",
+        quote: "ChatGPT + Make.com toky nám transformovaly proces zákaznické podpory. Už žádné ruční odpovědi!",
         author: "Maria G.",
-        role: "SaaS Founder",
+        role: "Zakladatelka SaaS",
         image: "https://randomuser.me/api/portraits/women/44.jpg",
     },
     {
-        quote: "Exceptional service and results. The MetaAds team is our go-to partner for performance marketing.",
+        quote: "Tým propojil náš CRM, Google Sheets a ManyChat do bezproblémové automatizace. Skvělá práce!",
         author: "Tom H.",
-        role: "Marketing Director",
+        role: "Marketingový ředitel",
         image: "https://randomuser.me/api/portraits/men/45.jpg",
     },
 ];
@@ -30,31 +29,55 @@ export default function Testimonials() {
     const testimonial = testimonials[index];
 
     return (
-        <section id="testimonials" className="relative isolate overflow-hidden bg-white px-6 py-24 sm:py-32 lg:px-8">
-            <div className="absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,var(--tw-gradient-stops))] from-emerald-100 to-white opacity-30" />
-            <div className="absolute inset-y-0 right-1/2 -z-10 mr-16 w-[200%] origin-bottom-left skew-x-[-30deg] bg-white shadow-xl ring-1 shadow-emerald-600/10 ring-emerald-50 sm:mr-28 lg:mr-0 xl:mr-16 xl:origin-center" />
-            <div className="mx-auto max-w-2xl lg:max-w-4xl">
-                <figure className="mt-10">
-                    <blockquote className="text-center text-xl font-semibold leading-8 text-gray-900 sm:text-2xl sm:leading-9">
+        <section
+            id="testimonials"
+            className="relative isolate overflow-hidden px-6 py-28 sm:py-36 lg:px-8 bg-black text-white"
+        >
+            <div className="absolute inset-0 -z-10 blur-3xl opacity-20"></div>
+
+            <div className="mx-auto max-w-3xl text-center">
+                <h2 className="text-sm font-semibold text-[#645CFF]">Co říkají naši klienti</h2>
+                <p className="mt-2 text-4xl font-bold tracking-tight sm:text-5xl">
+                    Důvěřují nám moderní týmy
+                </p>
+            </div>
+
+            <div className="mx-auto mt-16 max-w-xl text-center">
+                <figure className="relative rounded-2xl bg-gray-900 p-8 shadow-xl ring-1 ring-[#645CFF]/10">
+                    {/* Číslo boxu */}
+                    <div className="absolute -top-5 left-1/2 -translate-x-1/2 flex items-center justify-center w-10 h-10 rounded-full bg-[#645CFF] text-white text-sm font-bold shadow-md">
+                        {index + 1}
+                    </div>
+
+                    <blockquote className="text-lg font-medium text-white sm:text-xl mt-4">
                         <p>“{testimonial.quote}”</p>
                     </blockquote>
-                    <figcaption className="mt-10">
-                        <img className="mx-auto size-10 rounded-full" src={testimonial.image} alt={testimonial.author} />
-                        <div className="mt-4 flex items-center justify-center space-x-3 text-base">
-                            <div className="font-semibold text-gray-900">{testimonial.author}</div>
-                            <svg viewBox="0 0 2 2" width="3" height="3" aria-hidden="true" className="fill-gray-900">
-                                <circle cx="1" cy="1" r="1" />
-                            </svg>
-                            <div className="text-gray-600">{testimonial.role}</div>
+                    <figcaption className="mt-6 flex items-center justify-center gap-x-4">
+                        <img
+                            className="h-12 w-12 rounded-full object-cover"
+                            src={testimonial.image}
+                            alt={testimonial.author}
+                        />
+                        <div className="text-left">
+                            <div className="text-base font-semibold text-white">{testimonial.author}</div>
+                            <div className="text-sm text-gray-400">{testimonial.role}</div>
                         </div>
                     </figcaption>
                 </figure>
-                <div className="mt-8 flex justify-center gap-4">
-                    <button onClick={prev} className="rounded-full bg-emerald-100 p-2 hover:bg-emerald-200">
-                        <ChevronLeftIcon className="h-5 w-5 text-emerald-600" />
+
+                {/* Ovládací tlačítka */}
+                <div className="mt-10 flex justify-center gap-4">
+                    <button
+                        onClick={prev}
+                        className="rounded-full border border-[#bcb8ff] bg-gray-900 p-2 shadow-sm hover:bg-[#eeeefe] hover:text-black transition"
+                    >
+                        <ChevronLeftIcon className="h-5 w-5 text-[#645CFF]" />
                     </button>
-                    <button onClick={next} className="rounded-full bg-emerald-100 p-2 hover:bg-emerald-200">
-                        <ChevronRightIcon className="h-5 w-5 text-emerald-600" />
+                    <button
+                        onClick={next}
+                        className="rounded-full border border-[#bcb8ff] bg-gray-900 p-2 shadow-sm hover:bg-[#eeeefe] hover:text-black transition"
+                    >
+                        <ChevronRightIcon className="h-5 w-5 text-[#645CFF]" />
                     </button>
                 </div>
             </div>
